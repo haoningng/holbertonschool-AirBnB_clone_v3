@@ -74,7 +74,7 @@ def create_review(place_id):
     if 'text' not in data:
         abort(400, 'Missing text')
 
-    review = Review(**data)
+    review = Review(**data, place_id=place.id)
     storage.new(review)
     storage.save()
     return jsonify(review.to_dict()), 201
